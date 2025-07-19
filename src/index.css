@@ -1,0 +1,225 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Cosmic Space Theme Colors */
+  --primary: 225 25% 20%; /* Deep space blue */
+  --primary-foreground: 210 20% 98%;
+  --accent: 238 84% 67%; /* Cosmic indigo */
+  --accent-foreground: 210 20% 98%;
+  --background: 225 100% 4%; /* Deep cosmic black */
+  --foreground: 210 20% 98%;
+  --dark-mode: 0 0% 0%; /* Pure black */
+  
+  /* UI Colors */
+  --border: 225 25% 16%;
+  --input: 225 25% 16%;
+  --ring: 238 84% 67%;
+  --secondary: 225 25% 16%;
+  --secondary-foreground: 210 20% 98%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 210 20% 98%;
+  --muted: 225 25% 16%;
+  --muted-foreground: 215 16% 65%;
+  --popover: 225 25% 20%;
+  --popover-foreground: 210 20% 98%;
+  --card: 225 25% 20%;
+  --card-foreground: 210 20% 98%;
+  --radius: 0.5rem;
+  
+  /* Additional cosmic colors */
+  --cosmic-purple: 271 81% 56%;
+  --cosmic-cyan: 188 94% 43%;
+  --cosmic-gold: 43 96% 56%;
+  --cosmic-pink: 322 84% 60%;
+  --star-white: 210 20% 98%;
+  --nebula-blue: 213 94% 68%;
+  
+  /* Typography */
+  --font-inter: 'Inter', sans-serif;
+  --font-japanese: 'Noto Sans JP', sans-serif;
+  --font-korean: 'Noto Sans KR', sans-serif;
+  --font-code: 'Source Code Pro', monospace;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+
+    font-family: var(--font-inter);
+    overflow-x: hidden;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Cosmic Background */
+  .cosmic-bg {
+    background: radial-gradient(ellipse at center, hsl(var(--primary)) 0%, hsl(var(--background)) 70%);
+    position: relative;
+  }
+  
+  /* Glowing text effects */
+  .glow-text {
+    text-shadow: 0 0 10px hsl(var(--accent)), 0 0 20px hsl(var(--accent)), 0 0 30px hsl(var(--accent));
+  }
+  
+  /* Floating animation */
+  .float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { 
+      transform: translateY(0); 
+    }
+
+    50% { 
+      transform: translateY(-20px); 
+    }
+  }
+  
+  /* Pulse animation */
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+  
+  @keyframes pulse-glow {
+    from { 
+      box-shadow: 0 0 20px hsl(var(--accent) / 50%); 
+    }
+
+    to { 
+      box-shadow: 0 0 40px hsl(var(--accent) / 80%), 0 0 60px hsl(var(--accent) / 40%); 
+    }
+  }
+  
+  /* Starfield animation */
+  .stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s infinite;
+  }
+  
+  @keyframes twinkle {
+    0%, 100% { 
+      opacity: 30%; 
+      transform: scale(1); 
+    }
+
+    50% { 
+      opacity: 100%; 
+      transform: scale(1.2); 
+    }
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--cosmic-purple)), hsl(var(--cosmic-cyan)));
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Glass morphism */
+  .glass {
+    background: rgb(255 255 255 / 5%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgb(255 255 255 / 10%);
+  }
+  
+  /* Philosophical quote styling */
+  .philosophy-text {
+    font-family: var(--font-japanese);
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    line-height: 1.8;
+  }
+  
+  /* Korean tech aesthetic */
+  .korean-tech {
+    font-family: var(--font-korean);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+  
+  /* Code styling */
+  .code-text {
+    font-family: var(--font-code);
+    font-weight: 400;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--accent));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--cosmic-purple));
+}
+
+/* Selection styling */
+::selection {
+  background: hsl(var(--accent) / 30%);
+  color: hsl(var(--star-white));
+}
+
+/* Additional Artistic Animations */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes reverse-spin {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.animate-float-slow {
+  animation: float-slow 15s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+.animate-reverse-spin {
+  animation: reverse-spin 15s linear infinite;
+}
+
+/* Gradient Utilities */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
